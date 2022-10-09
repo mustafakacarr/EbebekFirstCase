@@ -1,2 +1,2 @@
 # EbebekFirstCase
-This case for Ebebek QA & SAP Practicum
+Case for Ebebek QA & SAP Practicum
