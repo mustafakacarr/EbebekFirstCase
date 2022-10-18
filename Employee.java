@@ -1,10 +1,11 @@
+
 public class Employee {
     private String name;
-    private int salary;
+    private double salary;
     private int workHours;
     private int hireYear;
 
-    public Employee(String name, int salary, int workHours, int hireYear) {
+    public Employee(String name, double salary, int workHours, int hireYear) {
         this.name = name;
         this.salary = salary;
         this.workHours = workHours;
@@ -19,11 +20,11 @@ public class Employee {
         this.name = name;
     }
 
-    public int getSalary() {
+    public double getSalary() {
         return salary;
     }
 
-    public void setSalary(int salary) {
+    public void setSalary(double salary) {
         this.salary = salary;
     }
 
@@ -53,15 +54,14 @@ public class Employee {
         return taxPrice;
     }
 
-    public int bonus() {
-        int bonus;
+    public double bonus() {
+        double bonus;
         if (getWorkHours() > 40) {
             bonus = (getWorkHours() - 40) * 30;
         } else {
             bonus = 0;
         }
-        return bonus*4;
-        //Aylık fark.
+        return bonus;
     }
 
     public double raiseSalary() {
@@ -75,12 +75,20 @@ public class Employee {
         } else if (workingYears > 19) {
             raise = getSalary() * 15 / 100;
         }
-        return raise+bonus()+getSalary()-tax();
+        return raise;
     }
 
     @Override
     public String toString() {
-        return getName() + " \t " + getSalary() + " TL  \t\t "+getWorkHours()+" Saat  \t\t\t "+getHireYear()+" \t\t\t\t"+tax()+" TL \t" +
-                " "+bonus()+" TL  \t\t "+(raiseSalary()-(double)getSalary())+" TL  \t\t\t\t\t "+raiseSalary()+" TL  \t\t\t\t "+raiseSalary()+" TL ";
+        String mesaj = "Adı : " + getName() + "\n"
+                + "Maaşı : " + getSalary() + "\n"
+                + "Çalışma Saati : " + getWorkHours() + "\n"
+                + "Başlangıç Yılı : " + getHireYear() + "\n"
+                + "Vergi : " + tax() + "\n"
+                + "Bonus : " + bonus() + "\n"
+                + "Maaş Artışı : " + raiseSalary() + "\n"
+                + "Vergi ve Bonuslar ile Birlikte Maaş : " + (getSalary()-tax()+bonus()) + "\n"
+                + "Toplam Maaş : " + (raiseSalary()+getSalary()+bonus()-tax()) + "\n";
+        return mesaj;
     }
 }
